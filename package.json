@@ -12,14 +12,5 @@
   },
   "keywords": [],
   "author": "",
-  "license": "ISC",
-  "dependencies": {
-    "dialogflow": "1.2.0",
-    "dialogflow-fulfillment": "0.5.0",
-    "dotenv": "^8.2.0",
-    "express": "^4.17.1",
-    "firebase-admin": "5.13.1",
-    "firebase-functions": "3.6.1",
-    "resolve": "^1.17.0"
-  }
+  "license": "ISC"
 }
