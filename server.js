@@ -116,5 +116,5 @@ var server = http.createServer(function(request, response) {
             break;  
     }  
 });  
-server.listen(8082); 
+server.listen(process.env.PORT || 8082); 
 console.log('server running on port 8082');
