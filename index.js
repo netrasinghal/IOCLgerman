@@ -1,11 +1,18 @@
+const express = require('express')
 const functions = require('firebase-functions');
 const {WebhookClient} = require('dialogflow-fulfillment');
 const customer="CustomerDetails";
 
+const app=express()
+const port = process.env.PORT
+
 //console.log(typeof parseInt('7000000047908010',10));
 //gcloud functions deploy NAME --runtime nodejs8 --trigger-http
 
-exports.multilingual= functions.https.onRequest((request,response) =>{
+app.use(express.json())
+app.use(express.urlencoded({ extended: true }))
+
+app.post('/chatbot',(request,response) =>{
     const agent = new WebhookClient({request, response });
     let ID = parseInt(request.body.queryResult.parameters.customerdetails);
     let localelanguage=agent.locale;
@@ -64,3 +71,4 @@ exports.multilingual= functions.https.onRequest((request,response) =>{
    intentMap.set('CustomerDetails', customerintentHandler);
    agent.handleRequest(intentMap);
 });
+app.listen(port, () => { console.log(`Server running on port number: ${port}`) })
